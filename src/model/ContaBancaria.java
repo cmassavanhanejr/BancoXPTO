@@ -3,14 +3,16 @@
  */
 package model;
 
+import javax.swing.JOptionPane;
+
 /**
  * Abstract class Conta Bancaria
- * contém como atributos o numero da conta, saldo e historico e 
- * como métodos abstratos sacar e depositar que recebem um parâmetro do tipo double.
+ * contï¿½m como atributos o numero da conta, saldo e historico e 
+ * como mï¿½todos abstratos sacar e depositar que recebem um parï¿½metro do tipo double.
  * @author Carlos Massavanhane
  * 
  */
-public class ContaBancaria {
+public abstract class ContaBancaria {
 
 	
 	//variables declaration
@@ -102,19 +104,32 @@ public class ContaBancaria {
 	 */
 	public void sacar(double valor) {
 		this.saldo-=valor;
+                this.historico=this.historico+" \n Saque no valor de: "+valor;
+                JOptionPane.showMessageDialog(null, "Saque realizado com sucesso!! \n o saldo actual eh "+ this.saldo);
 	}
 	
+        /**
+         * Method abstrascto para validar o saque de acordo com tipo de conta 
+         * @param valor
+         * @return 
+         */
+        public abstract boolean validarSaque(double valor);
+        
 	/**
 	 * Method to depositar valor da conta
 	 * @param valor
 	 */
 	public void depositar(double valor) {
 		this.saldo+=valor;
+                this.historico=this.historico+" \n deposito no valor de: "+valor;
+                JOptionPane.showMessageDialog(null, "Deposito efectuado! O saldo actual eh de "+this.saldo);
 	}
 	
 	public void transferir(double valor, ContaBancaria conta) {
 		this.sacar(valor);
 		conta.depositar(valor);
+                this.historico=this.historico+" \n transferencia para "+ conta.getNumero() + "no valor de: "+valor;
+                JOptionPane.showMessageDialog(null, "Transferido com sucesso para "+conta.getNumero() +"no valor de "+valor);
 	}
 
 	/* (non-Javadoc)

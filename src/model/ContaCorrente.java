@@ -3,6 +3,8 @@
  */
 package model;
 
+import javax.swing.JOptionPane;
+
 /**
  * Class that represents a current bank account 
  * @author Carlos Massavanhane
@@ -61,7 +63,15 @@ public class ContaCorrente extends ContaBancaria implements Imprimivel{
 	@Override
 	public void mostrarDados() {
 		// TODO Auto-generated method stub
+                JOptionPane.showMessageDialog(null,
+                        getClass().getName()+
+                        "\n numero: "+ this.getNumero() + 
+                        "\n saldo: "+ this.getSaldo()+
+                        "\n historico: "+ this.getHistorico()+
+                        "\n limite: "+ this.taxaDeOperacao
+                );
 		
+
 	}
 
 	/* (non-Javadoc)
@@ -70,8 +80,10 @@ public class ContaCorrente extends ContaBancaria implements Imprimivel{
 	@Override
 	public void sacar(double valor) {
 		// TODO Auto-generated method stub
-		super.sacar(valor);
-		this.setSaldo(this.getSaldo()-this.taxaDeOperacao);
+		if(validarSaque(valor))
+                    super.sacar(valor+this.taxaDeOperacao);
+                else
+                    JOptionPane.showMessageDialog(null, "Nao pode fazer o saque pois nao tem saldo suficiente e excedeu o limite");
 	}
 
 	/* (non-Javadoc)
@@ -91,6 +103,18 @@ public class ContaCorrente extends ContaBancaria implements Imprimivel{
 	public String toString() {
 		return super.toString()+" taxaDeOperacao=" + taxaDeOperacao + "]";
 	}
+
+    /**
+     * Implementacao do validar saque
+     * @param valor
+     * @return 
+     */
+    @Override
+    public boolean validarSaque(double valor) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return valor+this.getTaxaDeOperacao()<=this.getSaldo();
+            
+    }
 	
 	
 	

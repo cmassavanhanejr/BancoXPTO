@@ -3,6 +3,8 @@
  */
 package model;
 
+import javax.swing.JOptionPane;
+
 /**
  * Classe que refere-se a caracteriscas e accoes de uma conta poupanca
  * @author Carlos Massavanhane
@@ -58,17 +60,27 @@ public class ContaPoupanca extends ContaBancaria implements Imprimivel {
 	@Override
 	public void mostrarDados() {
 		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(null,
+                        getClass().getName()+
+                        "\n numero: "+ this.getNumero() + 
+                        "\n saldo: "+ this.getSaldo()+
+                        "\n historico: "+ this.getHistorico()+
+                        "\n limite: "+ this.limite
+                );
 	}
 
 	/** 
 	 * @Override of @see model.ContaBancaria#sacar(double)
-	 * Metodo que dá credito a mais para o correntista caso ele precise sacar mais que o saldo de acordo com o limite
+	 * Metodo que dï¿½ credito a mais para o correntista caso ele precise sacar mais que o saldo de acordo com o limite
 	 * @param valor
 	 */
+        @Override
 	public void sacar(double valor) {
 		// TODO Auto-generated method stub
-		super.sacar(valor);
+                if(validarSaque(valor))
+                    super.sacar(valor);
+                else
+                    JOptionPane.showMessageDialog(null, "Nao pode fazer o saque pois nao tem saldo suficiente e excedeu o limite");
 	}
 
 	/* (non-Javadoc)
@@ -78,6 +90,17 @@ public class ContaPoupanca extends ContaBancaria implements Imprimivel {
 	public String toString() {
 		return super.toString() + " limite=" + limite + "]";
 	}
+
+    /**
+     * Implementacao do metodo validar saque!!!
+     * @param valor
+     * @return 
+     */
+    @Override
+    public boolean validarSaque(double valor) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return valor<this.getSaldo()+this.limite;
+    }
 	
 	
 	
