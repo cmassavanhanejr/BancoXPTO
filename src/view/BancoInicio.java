@@ -5,6 +5,9 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import model.Banco;
+
 /**
  * Janela Inicial do banco XPTO
  * Esta classe contem os menus inicais do banco
@@ -28,21 +31,114 @@ public class BancoInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblTitulo = new javax.swing.JLabel();
+        lblRodape = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        pnlCadastro = new javax.swing.JPanel();
+        pnlButoesFuncionalidades = new javax.swing.JPanel();
+        pnlSelecionar = new javax.swing.JPanel();
+        btnSelecionar = new javax.swing.JButton();
+        pnlRemover = new javax.swing.JPanel();
+        cbSelecionar = new javax.swing.JComboBox<>();
+        btnRemover = new javax.swing.JButton();
+        pnlRelatorio = new javax.swing.JPanel();
+        btnGerar = new javax.swing.JButton();
+        pnlSair = new javax.swing.JPanel();
+        btnSair = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        lblTitulo.setText("Banco XPTO");
+        getContentPane().add(lblTitulo, java.awt.BorderLayout.PAGE_START);
+
+        lblRodape.setText("Maputo - (Data Hora Dinamica)");
+        getContentPane().add(lblRodape, java.awt.BorderLayout.PAGE_END);
+
+        jPanel1.setLayout(new java.awt.GridLayout(2, 1));
+
+        javax.swing.GroupLayout pnlCadastroLayout = new javax.swing.GroupLayout(pnlCadastro);
+        pnlCadastro.setLayout(pnlCadastroLayout);
+        pnlCadastroLayout.setHorizontalGroup(
+            pnlCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 452, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        pnlCadastroLayout.setVerticalGroup(
+            pnlCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 136, Short.MAX_VALUE)
         );
+
+        jPanel1.add(pnlCadastro);
+
+        pnlButoesFuncionalidades.setLayout(new java.awt.GridLayout(1, 4));
+
+        pnlSelecionar.setLayout(new java.awt.BorderLayout());
+
+        btnSelecionar.setText("Selecionar Conta");
+        btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelecionarActionPerformed(evt);
+            }
+        });
+        pnlSelecionar.add(btnSelecionar, java.awt.BorderLayout.CENTER);
+
+        pnlButoesFuncionalidades.add(pnlSelecionar);
+
+        pnlRemover.setLayout(new java.awt.GridLayout(2, 1));
+
+        cbSelecionar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pnlRemover.add(cbSelecionar);
+
+        btnRemover.setText("Remover Conta");
+        btnRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverActionPerformed(evt);
+            }
+        });
+        pnlRemover.add(btnRemover);
+
+        pnlButoesFuncionalidades.add(pnlRemover);
+
+        pnlRelatorio.setLayout(new java.awt.BorderLayout());
+
+        btnGerar.setText("Gerar Relatorio");
+        pnlRelatorio.add(btnGerar, java.awt.BorderLayout.CENTER);
+
+        pnlButoesFuncionalidades.add(pnlRelatorio);
+
+        pnlSair.setLayout(new java.awt.BorderLayout());
+
+        btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+        pnlSair.add(btnSair, java.awt.BorderLayout.CENTER);
+
+        pnlButoesFuncionalidades.add(pnlSair);
+
+        jPanel1.add(pnlButoesFuncionalidades);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnRemoverActionPerformed
+
+    private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showInputDialog("Introduza o nr da conta");
+    }//GEN-LAST:event_btnSelecionarActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Volte Sempre!!!");
+        System.exit(0);
+    }//GEN-LAST:event_btnSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,8 +173,24 @@ public class BancoInicio extends javax.swing.JFrame {
                 new BancoInicio().setVisible(true);
             }
         });
+        
+        Banco xpto=new Banco();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGerar;
+    private javax.swing.JButton btnRemover;
+    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSelecionar;
+    private javax.swing.JComboBox<String> cbSelecionar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblRodape;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel pnlButoesFuncionalidades;
+    private javax.swing.JPanel pnlCadastro;
+    private javax.swing.JPanel pnlRelatorio;
+    private javax.swing.JPanel pnlRemover;
+    private javax.swing.JPanel pnlSair;
+    private javax.swing.JPanel pnlSelecionar;
     // End of variables declaration//GEN-END:variables
 }
