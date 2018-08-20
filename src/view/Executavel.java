@@ -1,16 +1,17 @@
 /**
  * 
  */
-package control;
+package view;
 
+import control.Relatorio;
 import model.ContaCorrente;
 import model.ContaPoupanca;
 
 /**
  * Classe que:
  * 		1. Instancia duas contas (uma de cada tipo), credita algum valor para elas e 
- * 		efetua um saque (obs: no objeto conta poupança, faça um saque maior que o saldo atual).
- * 		2. Crie um objeto relatório e execute o método gerar relatório para cada conta criada.
+ * 		efetua um saque (obs: no objeto conta poupanï¿½a, faï¿½a um saque maior que o saldo atual).
+ * 		2. Crie um objeto relatï¿½rio e execute o mï¿½todo gerar relatï¿½rio para cada conta criada.
  * @author Carlos Massavanhane
  */
 public class Executavel {
@@ -23,8 +24,11 @@ public class Executavel {
 	 * 
 	 */
 	public Executavel() {
-		// TODO Auto-generated constructor stub
-		ContaCorrente cc=new ContaCorrente(1001,1000,"", 100);
+		// TODO Auto-generated constructor stub		
+	}
+        
+        public static void main(String[] args) {
+            ContaCorrente cc=new ContaCorrente(1001,1000,"", 100);
 		ContaPoupanca cp=new ContaPoupanca(1002,1000,"",500);
 		
 		cc.sacar(500);
@@ -36,7 +40,6 @@ public class Executavel {
 		//utilizando metodo gerar relatorio para cada tipo de conta
 		relatorio.gerarRelatorio(cc);
 		relatorio.gerarRelatorio(cp);
-		
-	}
+        }
 
 }
